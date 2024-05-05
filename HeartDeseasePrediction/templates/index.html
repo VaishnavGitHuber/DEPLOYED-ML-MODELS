@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    h1 {
+        color: #333;
+        text-align: center;
+    }
+    form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    input[type="number"], select, input[type="radio"] {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+    h2 {
+        text-align: center;
+        margin-top: 20px;
+    }
+</style>
+</head>
+<body>
+    <h1>Heart Disease Prediction</h1>
+    <form action="/predict" method="get">
+        Age: <input type="number" name="age" id="age"><br><br>
+        Sex: 
+        <select name="sex" id="sex">
+            <option value="1">Male</option>
+            <option value="0">Female</option>
+        </select><br><br>
+        Chest Pain Type: 
+        <select name="chest_pain" id="chest_pain">
+            <option value="1">Typical angina</option>
+            <option value="2">Atypical angina</option>
+            <option value="3">Non-anginal pain</option>
+            <option value="4">Asymptomatic</option>
+        </select><br><br>
+        Blood Pressure (mm Hg): <input type="number" name="bp" id="bp"><br><br>
+        Cholesterol (mg/dl): <input type="number" name="cholesterol" id="cholesterol"><br><br>
+        Fasting Blood Sugar &gt; 120 mg/dl: 
+        <input type="radio" name="fasting_blood_sugar" value="1"> Yes
+        <input type="radio" name="fasting_blood_sugar" value="0"> No<br><br>
+        Resting ECG Result: 
+        <select name="resting_ecg" id="resting_ecg">
+            <option value="0">Normal</option>
+            <option value="1">Abnormality</option>
+            <option value="2">Hypertrophy</option>
+        </select><br><br>
+        Exercise Induced Angina: 
+        <input type="radio" name="exercise_angina" value="1"> Yes
+        <input type="radio" name="exercise_angina" value="0"> No<br><br>
+        ST Depression induced by exercise relative to rest: 
+        <input type="number" name="st_depression" id="st_depression"><br><br>
+        Number of Major Vessels (0-3) colored by fluoroscopy: 
+        <input type="number" name="num_vessels" id="num_vessels" min="0" max="3"><br><br>
+        Thallium Stress Test: 
+        <select name="thalium_stress_test" id="thalium_stress_test">
+            <option value="3">Normal</option>
+            <option value="6">Fixed Defect</option>
+            <option value="7">Reversible Defect</option>
+        </select><br><br>
+        <button type="submit">PREDICT</button>
+    </form>
+
+</body>
+</html>
