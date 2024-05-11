@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAR PREDICTION MODEL</title>
+    <style>
+    body {
+        background-color: rgb(255, 255, 255);
+        background-image: url('https://media.architecturaldigest.com/photos/63079fc7b4858efb76814bd2/16:9/w_4000,h_2250,c_limit/9.%20DeLorean-Alpha-5%20%5BDeLorean%5D.jpg');
+    }
+
+    .container {
+
+    max-width:800px;
+    height: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+
+    background-image: url('https://media.architecturaldigest.com/photos/63079fc7b4858efb76814bd2/16:9/w_4000,h_2250,c_limit/9.%20DeLorean-Alpha-5%20%5BDeLorean%5D.jpg'); /* Replace 'car_background.jpg' with the path to your car image */
+        background-size: cover; /* Cover the entire container with the background image */
+        background-position: center; /* Center the background image */
+        color: rgb(255, 255, 255); 
+}
+
+.header {
+    text-align: center;
+    color: #333;
+}
+
+.form {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+}
+
+select, input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+#predictionText {
+    font-weight: bold; /* Make the text bold */
+    color: #ffffff; /* Set the text color */
+    font-size: 25px; /* Set the font size */
+    margin-top: 20px; /* Add margin to the top */
+}
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="header">CAR PREDICTION MODEL</h1>
+        <form action="/predict" method="get" class="form">
+            <label for="vehicle_name">Name of the Vehicle:</label>
+            <select name="vehicle_name" id="vehicle_name">
+                <option value="1">Hyundai Santro Xing</option>
+                <option value="2">Mahindra Jeep CL550</option>
+                <option value="3">Maruti Suzuki Alto</option>
+                <option value="4">Hyundai Grand i10</option>
+                <option value="5">Ford EcoSport Titanium</option>
+                <option value="6">Ford Figo</option>
+                <option value="7">Hyundai Eon</option>
+                <option value="8">Ford EcoSport Ambiente</option>
+                <option value="9">Skoda Fabia Classic</option>
+                <option value="10">Maruti Suzuki Stingray</option>
+                <option value="11">Hyundai Elite i20</option>
+                <option value="12">Mahindra Scorpio SLE</option>
+                <option value="13">Audi A8</option>
+                <option value="14">Audi Q7</option>
+                <option value="15">Mahindra Scorpio S10</option>
+                <option value="16">Hyundai i20 Sportz</option>
+                <option value="17">Maruti Suzuki Vitara</option>
+                <option value="18">Mahindra Bolero DI</option>
+                <option value="19">Maruti Suzuki Swift</option>
+                <option value="20">Maruti Suzuki Wagon</option>
+                <option value="21">Toyota Innova 2.0</option>
+                <option value="22">Renault Lodgy 85</option>
+                <option value="23">Skoda Yeti Ambition</option>
+                <option value="24">Maruti Suzuki Baleno</option>
+                <option value="25">Renault Duster 110</option>
+                <option value="26">Renault Duster 85</option>
+                <option value="27">Honda City 1.5</option>
+                <option value="28">Maruti Suzuki Dzire</option>
+                <option value="29">Honda Amaze</option>
+                <option value="30">Honda Amaze 1.5</option>
+                <option value="155">Mercedes Benz C</option>
+            </select><br><br>
+            
+            <label for="car_brand">Car Brand:</label>
+            <select name="car_brand" id="car_brand">
+                <option value="1">Hyundai</option>
+            <option value="2">Mahindra</option>
+            <option value="3">Maruti</option>
+            <option value="4">Ford</option>
+            <option value="5">Skoda</option>
+            <option value="6">Audi</option>
+            <option value="7">Toyota</option>
+            <option value="8">Renault</option>
+            <option value="9">Honda</option>
+            <option value="10">Datsun</option>
+            <option value="11">Mitsubishi</option>
+            <option value="12">Tata</option>
+            <option value="13">Volkswagen</option>
+            <option value="14">Noise</option>
+            <option value="15">Chevrolet</option>
+            <option value="16">Mini</option>
+            <option value="17">BMW</option>
+            <option value="18">Nissan</option>
+            <option value="19">Hindustan</option>
+            <option value="20">Fiat</option>
+            <option value="21">Commercial</option>
+            <option value="22">Force</option>
+            <option value="23">Mercedes</option>
+            <option value="24">Land</option>
+            <option value="25">Yamaha</option>
+            <option value="26">Swift</option>
+            <option value="27">Jaguar</option>
+            <option value="28">Jeep</option>
+            <option value="29">tata</option>
+            <option value="30">Volvo</option>
+            <option value="31">TATA</option>
+            </select><br><br>
+            
+            <label for="fuel_type">Fuel Type:</label>
+            <select name="fuel_type" id="fuel_type">
+                <option value="1">Petrol</option>
+                <option value="2">Diesel</option>
+                <option value="3">Unknown</option>
+                <option value="4">LPG</option>
+            </select><br><br>
+            
+            <label for="kms_driven">Kilometers Driven:</label>
+            <input type="number" name="kms_driven" id="kms_driven"><br><br>
+            
+            <label for="manufactured_year">Manufactured Year:</label>
+            <input type="number" name="manufactured_year" id="manufactured_year"><br><br>
+            
+            <button type="submit">PREDICT</button>
+
+            <br>
+            <br>
+
+            <p id="predictionText">ESTIMATED CAR PRICE: ₹{{predicted_rate}} (in rupees)</p>
+        </form>
+    </div>
+</body>
+</html>
