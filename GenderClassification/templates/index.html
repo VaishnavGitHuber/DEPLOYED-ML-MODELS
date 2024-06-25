@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gender Classification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:url('data:image/png;base64,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');
+            background-color: #fdfdfd;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        .container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Gender Classification</h2>
+        <form action="/predict_gender" method="get">
+            <div class="form-group">
+                <label for="long_hair">Long Hair:</label>
+                <select name="long_hair" id="long_hair">
+                    <option value=1>Yes</option>
+                    <option value=0>No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="fore_head_width">Forehead Width (cm):</label>
+                <input type="number" name="fore_head_width" id="fore_head_width" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="fore_head_length">Forehead Length (cm):</label>
+                <input type="number" name="fore_head_length" id="fore_head_length" step="0.1" required>
+            </div>
+            <div class="form-group">
+                <label for="nose_wide">Nose Wide:</label>
+                <select name="nose_wide" id="nose_wide">
+                    <option value=1>Yes</option>
+                    <option value=0>No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nose_long">Nose Long:</label>
+                <select name="nose_long" id="nose_long">
+                    <option value=1>Yes</option>
+                    <option value=0>No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="lips_thin">Lips Thin:</label>
+                <select name="lips_thin" id="lips_thin">
+                    <option value=1>Yes</option>
+                    <option value=0>No</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="distance_nose_to_lip_long">Distance Nose to Lip Long:</label>
+                <select name="distance_nose_to_lip_long" id="distance_nose_to_lip_long">
+                    <option value=1>Yes</option>
+                    <option value=0>No</option>
+                </select>
+            </div>
+            <button type="submit">PREDICT</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
+</body>
+</html>
