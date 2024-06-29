@@ -8,8 +8,8 @@ This repository contain all the ML models which are deployed with all the codes 
 3. Gender Classification
   * The task of the Geder classification is to correctly classify into male and female gender based on the features given of the face parameters such as nose length,width etc.
   * the accuracy of the model is about 96%+
-  
-* Not added the environment file due to large space limitataion. if you want to deploy  the model please create a enviroment
+4. 
+  ~ Not added the environment file due to large space limitataion. if you want to deploy  the model please create a enviroment
 * commands:
 *           python -m venv myvenv
 *           source myvenv/bin/activate
